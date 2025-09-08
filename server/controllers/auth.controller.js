@@ -21,7 +21,7 @@ export const sign_up = async (req, res) => {
         
         const token = await gentoken(new_user._id)
 
-        res.cookies("token", token, {
+        res.cookie("token", token, {
             httpOnly : true,
             sameSite : true,
             maxAge : 30*24*60*60*1000
@@ -48,7 +48,7 @@ export const sign_in = async (req, res) => {
 
         const token = await gentoken(existing_user._id)
         
-        res.cookies("token", token, {
+        res.cookie("token", token, {
             httpOnly : true,
             sameSite : true,
             maxAge : 30*24*60*60*1000
@@ -56,6 +56,6 @@ export const sign_in = async (req, res) => {
 
         res.status(200).json({message : "Signed in successfully", user : existing_user})  
     } catch (error) {
-        res.status(500).json({message : "Internal server error"})
+        res.status(500).json({message : `Internal server error : ${error.message}`})
     }
 }
