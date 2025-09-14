@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { signInUser } from "../apicalls/authcalls.js";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from '../assets/gradient-blue-pink-abstract-art-wallpaper-preview.jpg'; // Adjust the path as necessary
+import { setUserData } from "../redux/userSlice.js";
+import {useDispatch} from "react-redux"
 
 function signIn() {
   const [userName, setUserName] = useState("");
   const [passwd, setPasswd] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignIn = async (e) => {
     e.preventDefault()
@@ -20,7 +23,7 @@ function signIn() {
     };
     try {
       const response = await signInUser(credentials);
-      console.log("User signed in successfully:", response);
+      dispatch(setUserData(response.user))
       alert("User signed in successfully");
       navigate("/home");
       setUserName("");
