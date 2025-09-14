@@ -1,0 +1,22 @@
+nav {
+    display: grid;
+    grid-template-rows: 4fr 5fr 7fr;
+    width : 15rem;
+}
+
+.logo-container {
+    grid-row: 1/2;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+nav ul {
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}

@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+:root {
+  --color-bg: #fafafa;                /* Instagram light background */
+  --color-surface: #ffffff;           /* Card/Surface */
+  --color-primary: #e1306c;           /* Instagram pink */
+  --color-primary-light: #fd1d1d;     /* Instagram red/orange */
+  --color-secondary: #405de6;         /* Instagram blue */
+  --color-accent: #f77737;            /* Instagram orange */
+  --color-text: #262626;              /* Instagram dark text */
+  --color-muted: #8e8e8e;             /* Instagram muted text */
+  --color-border: #dbdbdb;            /* Instagram border */
+}
+
+[data-theme="dark"] {
+  --color-bg: #181818;                /* Instagram dark background */
+  --color-surface: #222326;           /* Instagram dark card */
+  --color-primary: #e1306c;           /* Instagram pink */
+  --color-primary-light: #fd1d1d;     /* Instagram red/orange */
+  --color-secondary: #405de6;         /* Instagram blue */
+  --color-accent: #f77737;            /* Instagram orange */
+  --color-text: #fafafa;              /* Instagram light text */
+  --color-muted: #8e8e8e;             /* Instagram muted text */
+  --color-border: #363636;            /* Instagram dark border */
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+}
