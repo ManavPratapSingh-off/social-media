@@ -11,8 +11,8 @@ function Landingnav() {
         <img src={logo} alt="logo" />
       </div>
       <div className="col-start-8 py-4 flex items-center justify-evenly">
-        <button onClick={() => navigate("/signIn")} className="bg-[var(--color-surface)] p-2 rounded-md cursor-pointer">Log in</button>
-        <button onClick={() => navigate("/signUp")} className="bg-[var(--color-secondary)] p-2 rounded-md cursor-pointer">Sign up</button>
+        <button onClick={() => navigate("/sign-in")} className="bg-[var(--color-surface)] p-2 rounded-md cursor-pointer">Log in</button>
+        <button onClick={() => navigate("/sign-up")} className="bg-[var(--color-secondary)] p-2 rounded-md cursor-pointer">Sign up</button>
       </div>
     </div>
   );

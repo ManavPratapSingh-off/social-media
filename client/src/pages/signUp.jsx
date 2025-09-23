@@ -10,7 +10,8 @@ function signUp() {
   const [passwd, setPasswd] = useState("");
   const navigate = useNavigate();
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault()
     if (!name || !email || !userName || !passwd) {
       alert("Please fill all the fields");
       return;
@@ -112,7 +113,7 @@ function signUp() {
           <button
             type="submit"
             className="w-full bg-[var(--color-primary)] text-[var(--color-surface)] py-2 rounded hover:bg-[var(--color-primary-light)] transition"
-            onClick={handleSignUp}
+            onClick={(e) => handleSignUp(e)}
           >
             Sign Up
           </button>
