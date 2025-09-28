@@ -4,7 +4,7 @@ import CurrentUser from './CurrentUser.jsx'
 
 function Messages() {
   return (
-    <div className='flex flex-col items-start w-full pr-20 my-6 flex-wrap gap-3'>
+    <div className='bg-[var(--color-surface)] flex flex-col items-center justify-start w-full pt-2 flex-wrap gap-3 rounded-lg'>
       <CurrentUser/>
       <div className="flex flex-col items-start w-full flex-wrap gap-3">
         {

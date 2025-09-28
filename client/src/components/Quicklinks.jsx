@@ -8,7 +8,7 @@ import { FaRegHeart } from "react-icons/fa";
 
 function Quicklinks() {
   return (
-    <ul className="grid grid-cols-6 gap-8 text-left w-full">
+    <ul className="grid grid-cols-6 gap-8 text-left text-[var(--color-text)] w-full">
       <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><AiFillHome/></span>Home</li>
       <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><FiSearch/></span>Search</li>
       <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><FaRegCompass/></span>Explore</li>

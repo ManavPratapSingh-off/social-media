@@ -4,7 +4,7 @@ import Logo from './Logo.jsx'
 
 function Navbar() {
   return (
-    <nav className="border-r border-[var(--color-border)] rounded-md p-4 h-screen">
+    <nav className="bg-[var(--color-surface)] border-r border-[var(--color-border)] rounded-md p-4 h-screen">
         <Logo/>
         <Quicklinks/>
     </nav>
