@@ -11,7 +11,7 @@ function Profile() {
     const dispatch = useDispatch()
     const get_call_response = async () => {
         try {
-            const data = await get_param_user(user_name)
+            const data = await get_param_user(user_name)            
             dispatch(setProfileData(data))
         } catch (error) {
             console.error(error);

@@ -2,9 +2,9 @@ import User from "../models/User.model.js";
 
  export const getAuthUser = async (req, res) => {
     try {
-        const user = await User.findById(req.user_id).select('-password')
+        const user = await User.findById(req._id).select('-password')
         if(!user) return res.status(404).json({message : "User not found"})
-        res.status(200).json({user : user})
+        res.status(200).json(user.data?user.data : user)
     } catch (error) {
         res.status(500).json({message : "Internal server error"})
     }
@@ -15,7 +15,7 @@ export const get_param_user = async (req, res) => {
         const {user_name} = req.params 
         const response = await User.findOne({user_name}).select("-password")
         if (!response) res.status(404).json({message : "user not found!"})
-        res.status(200).json(response)
+        res.status(200).json(response.data?response.data : response)
     } catch (error) {
         throw new Error(error)
     }

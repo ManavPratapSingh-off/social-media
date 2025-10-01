@@ -14,3 +14,12 @@ export const get_param_user = async (user_name) => {
         throw error.response?.data?.message || "Failed to fetch user data"
     }
 }
+
+export const patch_profile_details = async (body) => {
+    try {
+        const response = await api.patch(`/api/user/profile/${body._id}`, body)
+        return response?.data
+    } catch (error) {
+        throw error.response?.data?.message || "Failed to fetch user data"
+    }
+}

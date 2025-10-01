@@ -1,6 +1,7 @@
 import User from "../models/User.model.js"
 
 const check_updates = async (req, res, next) => {
+    console.log(req.body);
     const {_id, ...updates} = req.body
     const {name, user_name} = updates 
     if (name && name==="") return res.status(400).json({error : "name can not be an empty string"})

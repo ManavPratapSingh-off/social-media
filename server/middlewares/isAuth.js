@@ -7,7 +7,7 @@ const isAuth = async (req, res, next) => {
 
         const decodedUser = await jwt.verify(token, process.env.JWT_SECRET)
         console.log(decodedUser);
-        req.user_id = decodedUser._id  
+        req._id = decodedUser._id  
         next()
     } catch (error) {
         res.status(401).json({message : `user not authenticated : ${error.message}`})

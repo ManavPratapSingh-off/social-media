@@ -7,6 +7,6 @@ const userRouter = express.Router()
 
 userRouter.get("/", isAuth, getAuthUser)
 userRouter.get("/profile/:user_name", get_param_user)
-userRouter.patch("/profile/:user_name", check_updates, patch_profile_details)
+userRouter.patch("/profile/:_id", check_updates, patch_profile_details)
 
 export default userRouter

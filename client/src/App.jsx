@@ -14,16 +14,16 @@ import Profile from './pages/Profile.jsx'
 
 function App() {
   useCurrentUser()
-  const {userData} = useSelector(state=>state.user)
+  const { userData } = useSelector(state => state.user)
 
   return (
     <Routes>
-      <Route path='/' element={userData?<Navigate to="/home"/>:<Landing/>} />
+      <Route path='/' element={userData ? <Navigate to="/home" /> : <Landing />} />
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/sign-up' element={<SignUp />} />
-      <Route path='/home' element={userData?<Home /> : <SignIn/>} />
+      <Route path='/home' element={userData ? <Home /> : <SignIn />} />
       <Route path='/forgotPassword' element={<ForgotPassword />} />
-      <Route path='/profile/:user_name' element={<Profile/>}/>
+      <Route path='/profile/:user_name' element={<Profile />} />
     </Routes>
   )
 }
