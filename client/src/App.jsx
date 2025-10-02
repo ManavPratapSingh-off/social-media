@@ -11,6 +11,7 @@ import ForgotPassword from './pages/forgotPassword.jsx'
 import useCurrentUser from './hooks/useCurrentUser.jsx'
 import { useSelector } from 'react-redux'
 import Profile from './pages/Profile.jsx'
+import UploadPage from './pages/UploadPage.jsx'
 
 function App() {
   useCurrentUser()
@@ -24,6 +25,7 @@ function App() {
       <Route path='/home' element={userData ? <Home /> : <SignIn />} />
       <Route path='/forgotPassword' element={<ForgotPassword />} />
       <Route path='/profile/:user_name' element={<Profile />} />
+      <Route path='/upload' element={<UploadPage />} />
     </Routes>
   )
 }

@@ -16,7 +16,7 @@ function Quicklinks() {
       <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><FaRegCompass/></span>Explore</li>
       <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><BiMoviePlay/></span>Reels</li>
       <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><FaRegHeart/></span>Notifications</li>
-      <li className="cursor-pointer pl-6 flex justify-start items-center gap-4"><span className="text-2xl"><CgAddR/></span>Create</li>
+      <li className="cursor-pointer pl-6 flex justify-start items-center gap-4" onClick={()=>navigate("/upload")}><span className="text-2xl"><CgAddR/></span>Create</li>
     </ul>
   )
 }

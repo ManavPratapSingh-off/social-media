@@ -5,6 +5,7 @@ import AuthRouter from './routes/auth.routes.js'
 import cookieParser from 'cookie-parser'
 import userRouter from './routes/user.routes.js'
 import cors from 'cors'
+import postRouter from './routes/post.routes.js'
 
 dotenv.config()
 
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/auth", AuthRouter)
 app.use("/api/user", userRouter)
+app.use("/api/post", postRouter)
 
 app.listen(PORT, () => {
     console.log("server is running on port 8000");

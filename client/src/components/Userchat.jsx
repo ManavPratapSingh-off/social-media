@@ -6,11 +6,11 @@ function Userchat() {
         <div className='h-14 w-14 border rounded-full overflow-hidden border-[var(--color-border)] col-span-2'>
             <img src='' alt='dp'/>
         </div>
-        <div className='col-span-6 text-[var(--color-muted)] text-sm'>
+        <div className='col-span-7 text-[var(--color-muted)] text-sm'>
             <span className='font-semibold text-[var(--color-text)]'>user name</span><br/>
             full name or suggestions
         </div>
-        <button className='col-span-3 text-[var(--color-secondary)] hover:text-[var(--color-primary-light)] bg-transparent border-none shadow-none'>Follow</button>
+        <button className='col-span-2 text-[var(--color-secondary)] hover:text-[var(--color-primary-light)] bg-transparent border-none shadow-none'>Follow</button>
     </div>
   )
 }

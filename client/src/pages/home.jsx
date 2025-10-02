@@ -6,7 +6,7 @@ import bgImg from "../assets/gradient-blue-pink-abstract-art-wallpaper-preview.j
 
 function home() {
   return (
-    <div className="grid grid-cols-[1fr_3fr_1.5fr] gap-6 bg-[var(--color-bg)]" >
+    <div className="h-screen gap-6 bg-[var(--color-bg)]" >
       <Navbar/>
       <Main/>
       <Messages/>
