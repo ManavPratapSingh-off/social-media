@@ -13,12 +13,12 @@ const upload_file = async (file) => {
       api_key: process.env.CLOUD_API_KEY,
       api_secret: process.env.CLOUD_API_SECRET,
     });
-    const response = await cloudinary.uploader.upload(file, {
+    const response = await cloudinary.uploader.upload(file.path, {
       resource_type: "auto",
     });
     return response.secure_url;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error?error : "error from server/config/cloud.js");
   }
 };
 

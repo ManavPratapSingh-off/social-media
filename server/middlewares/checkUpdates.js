@@ -1,7 +1,6 @@
 import User from "../models/User.model.js"
 
 const check_updates = async (req, res, next) => {
-    console.log(req.body);
     const {_id, ...updates} = req.body
     const {name, user_name} = updates 
     if (name && name==="") return res.status(400).json({error : "name can not be an empty string"})
@@ -11,6 +10,7 @@ const check_updates = async (req, res, next) => {
             const user = await User.findOne({user_name : user_name})
             if (user) return res.status(400).json({message : `${user_name} not available`, user : user})
         } catch (error) {
+            console.error("checkUpdates.js : ", error);
             return res.status(500).json({error : error})
         }
     }

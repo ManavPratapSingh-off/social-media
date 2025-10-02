@@ -6,7 +6,6 @@ const isAuth = async (req, res, next) => {
         if (!token) return res.status(404).json({message : "token not found"})
 
         const decodedUser = await jwt.verify(token, process.env.JWT_SECRET)
-        console.log(decodedUser);
         req._id = decodedUser._id  
         next()
     } catch (error) {

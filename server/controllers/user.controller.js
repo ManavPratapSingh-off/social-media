@@ -1,3 +1,4 @@
+import upload_file from "../config/cloud.js";
 import User from "../models/User.model.js";
 
  export const getAuthUser = async (req, res) => {
@@ -22,12 +23,18 @@ export const get_param_user = async (req, res) => {
 }
 
 export const patch_profile_details = async (req, res) => {
-    try {
+    try {        
         const {_id} = req.body
+        
+        let profile_img;
+        if (req.file) profile_img = await upload_file(req.file)
+        if (profile_img) req.body.profile_img = profile_img
+        
         const response = await User.findByIdAndUpdate(_id, req.body, {new:true})
         if (!response) return res.status(404).json({message : `user-id : ${_id} not found!`})
         res.status(201).json(response)
     } catch (error) {
+        console.error("user.controller.js : ", error);
         res.status(500).json({error : error})
     }
 }
