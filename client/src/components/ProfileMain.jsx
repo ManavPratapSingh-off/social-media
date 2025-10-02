@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import reactLogo from "../assets/react.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { patch_profile_details } from "../apicalls/userCalls.js";
-import { setUserData } from "../redux/userSlice.js";
+import { useSelector } from "react-redux";
 import EditProfileModal from "./EditProfileModal.jsx";
 
 function ProfileMain() {
@@ -13,7 +11,7 @@ function ProfileMain() {
   return (
     <div className="w-full h-[30%] px-32 flex items-center justify-start gap-16 bg-[var(--color-bg)]">
       <div className="flex justify-center items-center rounded-full bg-[var(--color-surface)] w-32 h-32 overflow-hidden">
-        <img src={reactLogo} alt="profile_pic" className="w-32" />
+        <img src={userData?.profile_img?userData.profile_img : reactLogo} alt="profile_pic" className="w-32" />
       </div>
       <div className="flex flex-col items-start justify-center gap-4 py-24">
         <div className="w-full flex items-center gap-8">

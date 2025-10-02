@@ -7,9 +7,9 @@ function CurrentUser() {
   const navigate = useNavigate()  
 
   return (
-    <div onClick={() => navigate(`/profile/${userData?.user_name}`)} className="w-full h-15 px-3 flex justify-start items-center gap-4  hover:cursor-pointer hover:bg-[var(--color-bg)] rounded-lg">
-      <div className="h-10 w-10 border rounded-full border-[var(--color-border)]">
-        <img src="" alt="dp" />
+    <div onClick={() => navigate(`/profile/${userData?.user_name}`)} className="w-full h-20 px-3 flex justify-start items-center gap-4  hover:cursor-pointer hover:bg-[var(--color-bg)] rounded-lg">
+      <div className="h-15 w-15 border rounded-full overflow-hidden border-[var(--color-border)]">
+        <img src={userData.profile_img?userData.profile_img : ""} alt="dp" />
       </div>
       <div className="text-[var(--color-muted)] text-sm">
         <span className="font-semibold text-[var(--color-text)]">

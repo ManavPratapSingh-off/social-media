@@ -10,10 +10,10 @@ function EditProfileModal({setIsOpen}) {
   const [bio, setBio] = useState(userData.bio);
   const imgInput = useRef();
   const [fileURL, setFileURL] = useState("");
-  let file;
+  const [file, setfile] = useState(null)
 
   const handleImage = (e) => {
-    file = e.target.files[0];
+    setfile(e.target.files[0])
     const file_url = URL.createObjectURL(file);
     setFileURL(file_url);
   };
@@ -56,7 +56,7 @@ function EditProfileModal({setIsOpen}) {
             onChange={handleImage}
             hidden
           />
-          <div className="relative w-[100px] h-[100px] md:w-[120px] md:h-[120px] rounded-full overflow-hidden border-4 border-gray-200 shadow cursor-pointer group">
+          <div className="relative w-[100px] h-[100px] md:w-[120px] md:h-[120px] rounded-full overflow-hidden border-4 border-gray-200 shadow cursor-pointer group" style={{backgroundImage : `url(${userData.profile_img})`, backgroundSize : "cover", backgroundPosition : "center"}}>
             {fileURL ? <img src={fileURL} alt="profile-pic" /> : null}
             <div
               className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white font-medium transition"
