@@ -7,13 +7,13 @@ import { setDarkTheme } from "../redux/displaySlice";
 
 function MoreLinks() {
   const [isOpen, setisOpen] = useState(false)
-  const [isDarkTheme, setisDarkTheme] = useState(localStorage.getItem("isDarkTheme"))
+  const [isDarkTheme, setisDarkTheme] = useState(localStorage.getItem("theme")==="dark")
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (isDarkTheme) document.documentElement.setAttribute("data-theme", "dark")
     else document.documentElement.removeAttribute("data-theme")
-    localStorage.setItem("isDarkTheme", isDarkTheme)
+    localStorage.setItem("theme", isDarkTheme?"dark":"light")
     dispatch(setDarkTheme(isDarkTheme))
   }, [isDarkTheme])
 
