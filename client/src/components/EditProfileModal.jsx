@@ -10,22 +10,28 @@ function EditProfileModal({setIsOpen}) {
   const [bio, setBio] = useState(userData.bio);
   const imgInput = useRef();
   const [fileURL, setFileURL] = useState("");
+  let file;
 
   const handleImage = (e) => {
-    const file = e.target.files[0];
+    file = e.target.files[0];
     const file_url = URL.createObjectURL(file);
     setFileURL(file_url);
   };
 
   const form_send_body = async () => {
-    const body = { _id: userData._id };
-    if (name !== userData.name) body.name = name;
-    if (username !== userData.user_name) body.user_name = username;
-    if (bio !== userData.bio) body.bio = bio;
+    const formdata = new FormData()
+    formdata.append("_id", userData._id)
+    if (name !== userData.name) formdata.append("name", name)
+    if (username !== userData.user_name) formdata.append("user_name", username)
+    if (bio !== userData.bio) formdata.append("bio", bio)
+    if (file) formdata.append("profile_img", file)
 
     try {
-        const response = await patch_profile_details(body)
-        if (response) alert ("Changes saved successfully!\n", response)
+        const response = await patch_profile_details(formdata)
+        if (response) {
+          window.location.reload()
+          alert ("Changes saved successfully!\n", response)
+        }
     } catch (error) {
         alert (`Something went wrong!\n ${error}`)
     }
@@ -88,7 +94,6 @@ function EditProfileModal({setIsOpen}) {
               e.preventDefault()
               setIsOpen(false);
               form_send_body();
-              window.location.reload()
             }}
             className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
