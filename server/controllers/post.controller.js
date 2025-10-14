@@ -10,6 +10,13 @@ export const upload_post = async (req, res) => {
         const post = await Post.create({author : req.user_id, media_type, media_url, caption})
         return res.status(201).json({message : "post created successfully!", post})
     } catch (error) {
-        console.error(`Cannot create Post , ${error}`)
+        console.dir(error, { depth: null, colors: true })
+        res.status(500).send({error : error})
     }
+}
+
+export const get_all_posts = async (req, res) => {
+    const posts = await Post.find({}).sort({updatedAt : -1})
+    if (!posts) return res.Status(404).send({message : "No posts yet"})
+    res.send(posts)
 }

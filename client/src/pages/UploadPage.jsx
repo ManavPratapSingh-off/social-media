@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { FiPlusSquare } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 function UploadPage() {
   const navigate = useNavigate();
+  const input_media = useRef();
+  const [modaltype, setmodaltype] = useState("post");
+  const [media, setmedia] = useState(null)
+  const [srcurl, setsrcurl] = useState("")
+  const [mediatype, setmediatype] = useState("")
+
+  const handle_input_media = (e) => {
+    const file = e.target.files[0]
+    setmedia(file)
+    if(file?.type.includes('image')){
+      setmediatype('image')
+    }else if(file?.type.includes('video')){
+      setmediatype('video')
+    }else{
+        setmediatype(null)
+    }
+
+    const mediaUrl = URL.createObjectURL(file)
+    setsrcurl(mediaUrl)
+  }
 
   return (
     <div
@@ -40,15 +60,27 @@ function UploadPage() {
 
           {/* Upload type switch */}
           <div className="w-[95%] h-[50px] bg-[var(--color-bg)] rounded-full flex justify-around items-center mt-2">
-            <div className="w-[28%] h-[80%] flex justify-center items-center text-sm font-medium rounded-full bg-[var(--color-secondary)] text-[var(--color-surface)] shadow-md">
-              Post
-            </div>
-            <div className="w-[28%] h-[80%] flex justify-center items-center text-sm font-medium rounded-full text-[var(--color-muted)] hover:bg-[var(--color-border)] cursor-pointer">
-              Story
-            </div>
-            <div className="w-[28%] h-[80%] flex justify-center items-center text-sm font-medium rounded-full text-[var(--color-muted)] hover:bg-[var(--color-border)] cursor-pointer">
-              Reel
-            </div>
+            {["Post", "Story", "Reel"].map((type) => {
+              const isactive = modaltype === type.toLowerCase();
+              return (
+                <div
+                  key={type}
+                  onClick={() => setmodaltype(type.toLowerCase())}
+                  className={`w-[28%] h-[80%] flex justify-center items-center text-sm font-medium rounded-full cursor-pointer ${
+                    isactive
+                      ? "text-[var(--color-surface)] shadow-md"
+                      : "text-[var(--color-muted)] hover:bg-[var(--color-border)]"
+                  }`}
+                  style={{
+                    backgroundColor: isactive
+                      ? "var(--color-secondary)"
+                      : "transparent",
+                  }}
+                >
+                  {type}
+                </div>
+              );
+            })}
           </div>
 
           {/* Upload box */}
@@ -56,12 +88,15 @@ function UploadPage() {
             className="
           w-[95%] h-[220px] bg-[var(--color-bg)] border border-dashed border-[var(--color-border)]
           flex flex-col items-center justify-center gap-3 
-          mt-6 rounded-xl cursor-pointer 
+          mt-6 rounded-xl cursor-pointer  overflow-hidden
           hover:bg-[var(--color-surface)] transition
         "
+            onClick={() => input_media.current.click()}
           >
-            <FiPlusSquare className="text-[var(--color-muted)] w-8 h-8" />
-            <p className="text-[var(--color-text)] font-medium">Upload Post</p>
+            <input type="file" accept="image/*,video/*" ref={input_media} onClick={handle_input_media} hidden />
+            {srcurl ? <img src={srcurl} alt="posted_img" className="max-h-full max-w-full"/>
+            :(<><FiPlusSquare className="text-[var(--color-muted)] w-8 h-8" />
+            <p className="text-[var(--color-text)] font-medium">Add Media</p></>)}
           </div>
 
           {/* Caption input */}
@@ -84,7 +119,7 @@ function UploadPage() {
           shadow-[0_6px_16px_rgba(64,93,230,0.35)]
         "
           >
-            Upload Post
+            {`Upload ${modaltype.charAt(0).toUpperCase()}${modaltype.slice(1)}`}
           </button>
         </div>
 
