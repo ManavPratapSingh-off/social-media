@@ -1,29 +1,29 @@
 import React from 'react'
 
-function Postcard() {
+function Postcard({post}) {
   return (
     <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-sm max-w-md mx-auto my-6">
       {/* Post Header */}
       <div className="flex items-center px-4 py-3">
         <img
-          src="/profile.jpg"
+          src={post.author?.profile_img ? post.author.profile_img : ""}
           alt="Profile"
           className="h-10 w-10 rounded-full object-cover border border-[var(--color-border)]"
         />
         <div className="ml-3 flex-1">
-          <span className="font-semibold text-[var(--color-text)]">username</span>
-          <span className="block text-xs text-[var(--color-muted)]">2 hours ago</span>
+          <span className="font-semibold text-[var(--color-text)]">{post.author?.user_name ? post.author.user_name : "user name"}</span>
+          <span className="block text-xs text-[var(--color-muted)]">{post.updatedAt ? Date.now()-post.updatedAt : "2 hour ago"}</span>
         </div>
         <button className="text-[var(--color-muted)] text-xl">
           <i className="fas fa-ellipsis-h"></i>
         </button>
       </div>
       {/* Post Image */}
-      <div className="w-full bg-black">
+      <div className="w-full max-w-full bg-black">
         <img
-          src="/post.jpg"
+          src={post.media_url?post.media_url : ""}
           alt="Post"
-          className="w-full object-cover max-h-96"
+          className="w-full h-auto  object-contain"
         />
       </div>
       {/* Post Actions */}
@@ -39,15 +39,15 @@ function Postcard() {
       </div>
       {/* Post Likes */}
       <div className="px-4 text-sm font-semibold text-[var(--color-text)]">
-        1,234 likes
+        {post.likes?post.likes.length : "0 likes"}
       </div>
       {/* Post Caption */}
       <div className="px-4 py-2 text-[var(--color-text)]">
-        <span className="font-semibold">username</span> This is a sample caption for the post.
+        <span className="font-semibold">{post.author?.user_name ? post.author.user_name : "user name"}</span> {post.caption && post.caption}
       </div>
       {/* View all comments */}
       <div className="px-4 pb-2 text-[var(--color-muted)] text-sm cursor-pointer">
-        View all 56 comments
+        {post.comments ? `View all ${post.comments.length} comments` : "No comments yet"}
       </div>
       {/* Add a comment */}
       <div className="flex items-center border-t border-[var(--color-border)] px-4 py-2">
