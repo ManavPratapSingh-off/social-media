@@ -49,6 +49,7 @@ function UploadModal() {
       console.log(response)
       alert("post created successfully")
       setuploadModalisOpen(false)
+      window.location.reload()
     } catch (error) {
       console.log(error)
     }
