@@ -30,7 +30,7 @@ function ProfileMain() {
           )}
         </div>
         <span className="text-[var(--color-muted)] flex justify-start items-center gap-6">
-          <span>0 posts</span> <span>0 followers</span> <span>0 following</span>
+          <span>{userData?.posts ? userData.posts.length : 0} posts</span> <span>0 followers</span> <span>0 following</span>
         </span>
         {profileData?.bio && (
           <span className="text-sm font-[100]">{profileData?.bio}</span>

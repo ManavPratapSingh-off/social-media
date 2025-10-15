@@ -23,9 +23,9 @@ function Profile() {
     }, [])
 
   return (
-    <div className='w-screen h-screen bg-[var(--color-bg)] flex'>
+    <div className='w-screen h-screen bg-[var(--color-bg)] flex justify-end'>
         <Navbar/>
-        <div className='w-full h-full flex flex-col justify-start items-center'>
+        <div className='w-[84%] h-full flex flex-col justify-start items-center'>
             <ProfileMain/>
             <div className='w-[80%] h-full bg-[var(--color-surface)] rounded-4xl'></div>
         </div>
