@@ -5,8 +5,11 @@ import { useDispatch } from 'react-redux'
 import { setProfileData } from '../redux/userSlice.js'
 import ProfileMain from '../components/ProfileMain.jsx'
 import Navbar from '../components/Navbar.jsx'
+import { ModalContext } from '../context/ModalContext.jsx'
+import UploadModal from '../components/UploadModal.jsx'
 
 function Profile() {
+  const {uploadModalisOpen} = useContext(ModalContext)
     const {user_name} = useParams()
     const dispatch = useDispatch()
     const get_call_response = async () => {
@@ -29,6 +32,7 @@ function Profile() {
             <ProfileMain/>
             <div className='w-[80%] h-full bg-[var(--color-surface)] rounded-4xl'></div>
         </div>
+        {uploadModalisOpen && <UploadModal/>}
     </div>
   )
 }
