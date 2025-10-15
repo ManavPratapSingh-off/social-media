@@ -13,9 +13,11 @@ import { useSelector } from 'react-redux'
 import Profile from './pages/Profile.jsx'
 import UploadPage from './pages/UploadPage.jsx'
 import { AppProvider } from './context/AppProvider.jsx'
+import usePostCall from './hooks/usePostCall.jsx'
 
 function App() {
   useCurrentUser()
+  usePostCall()
   const { userData } = useSelector(state => state.user)
 
   return (

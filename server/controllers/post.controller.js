@@ -24,7 +24,7 @@ export const upload_post = async (req, res) => {
 }
 
 export const get_all_posts = async (req, res) => {
-    const posts = await Post.find({}).sort({updatedAt : -1})
+    const posts = await Post.find({}).populate("author", "user_name profile_img").sort({updatedAt : -1})
     if (!posts) return res.Status(404).send({message : "No posts yet"})
     res.send(posts)
 }

@@ -11,8 +11,15 @@ export const upload_post_apicall = async (body) => {
         const response = await api.post("/api/post/upload", body)
         return response.data?response.data : response
     } catch (error) {
-        throw error
+        throw error.response?.data?.message || "Failed to upload post"
     }
 }
 
-//.response?.data?.message || "Failed to upload post"
+export const get_post_apicall = async () => {
+    try {
+        const response = await api.get("/api/post/")
+        return response.data
+    } catch (error) {
+        throw error.response?.data?.message || "Failed to get all posts"
+    }
+}
